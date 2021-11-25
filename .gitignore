@@ -2,7 +2,6 @@ exp
 *.pyc
 *__pycache__*
 *core.*
-*.jpg
 *.pkl
 *.txt
 data/
