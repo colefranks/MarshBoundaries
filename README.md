@@ -7,4 +7,4 @@ Work in progress. Goal is to produce this:
 
 from this:
 
-<img src= "plum_raw.pdf"/>
+<img src= "recolor_marsh.pdf"/>
