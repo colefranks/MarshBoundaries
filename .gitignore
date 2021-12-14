@@ -12,3 +12,5 @@ tmp
 *~
 .DS_Store
 *.ipynb_checkpoints*
+pets_test/
+pets_train/
