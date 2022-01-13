@@ -14,3 +14,7 @@ tmp
 *.ipynb_checkpoints*
 pets_test/
 pets_train/
+old-junk/
+testing/
+training/
+pet_segmentation.ipynb
