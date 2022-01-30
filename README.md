@@ -9,7 +9,7 @@ from this:
 
 <img src="plum_raw.jpg"/>
 
-This is our inference so far:
+So far we are just using small patches as data points and inferring as follows:
 
 <img src="1000-epochs.png"/>
 
