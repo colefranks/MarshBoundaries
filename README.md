@@ -9,6 +9,8 @@ from this:
 
 <img src="plum_raw.jpg"/>
 
+While a large annotated image can be viewed as many data points, the main challenge is still the scarcity of labeled data.
+
 ## Deep network using patches as data points and only predicting boundary.
 
 So far we are just using small patches as data points and inferring as follows:
