@@ -13,7 +13,7 @@ YDIM = 11*XDIM//8
 FOLDER = "train_jpg/GCE"
 
 #assumes the images in the folder look like Band1.jpg, Band2.jpg etc
-def load_marsh_images(folder):
+def folder_to_array(folder):
     images = []
     
     for i in range(1,12):
@@ -28,7 +28,7 @@ def load_marsh_images(folder):
     return images
 
 #convert image to tensor that can go into model
-def get_tensor(images):
+def get_tensor_pred(images):
     images_tensor = tf.convert_to_tensor(images,dtype =tf.float32)
     SAMPLES,BANDS,HEIGHT,WIDTH = images_tensor.shape
     image_tensor = tf.transpose(images_tensor,[0,2,3,1])
@@ -36,7 +36,7 @@ def get_tensor(images):
 
 #create mask from prediction
 
-def create_mask(pred_mask):
+def create_mask_pred(pred_mask):
   pred_mask = tf.argmax(pred_mask, axis=-1)
   pred_mask = pred_mask[..., tf.newaxis]
   return pred_mask[0]
@@ -47,7 +47,7 @@ def create_mask(pred_mask):
 
 #it is not robust to re-sizing.
 
-def show_predictions(
+def pred_from_saved(
     model_path = 'saved-models/Depth2Maxpool87val',
     folder_path = "train_jpg/GCE",
     startx = 0, 
@@ -68,13 +68,13 @@ def show_predictions(
 
     model = tf.keras.models.load_model(model_path)
 
-    images = load_marsh_images(folder_path)
+    images = folder_to_array(folder_path)
 
-    small_image = get_tensor(images[WHICH_IMG,:,startx:endx ,starty:endy].reshape([1,BANDS,zoomx,zoomy]))
+    small_image = get_tensor_pred(images[WHICH_IMG,:,startx:endx ,starty:endy].reshape([1,BANDS,zoomx,zoomy]))
 
     small_pred = model.predict(small_image)
 
-    small_pred = create_mask(small_pred)
+    small_pred = create_mask_pred(small_pred)
 
 
     plt.figure(figsize=(fig_size, fig_size))
@@ -86,7 +86,7 @@ def show_predictions(
     plt.show()
 
 def main():
-    show_predictions()
+    pred_from_saved()
 
 if __name__ == '__main__':
     main()
