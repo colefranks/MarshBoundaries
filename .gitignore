@@ -12,12 +12,6 @@ tmp
 *~
 .DS_Store
 *.ipynb_checkpoints*
-pets_test/
-pets_train/
-pet_model/
 old-junk/
-testing/
-training/
 literature/
-pet_segmentation.ipynb
 logs/
