@@ -47,6 +47,8 @@ We only did this prediction on GCE and VCR.
 3. Do some interpolation to the input images to get rid of the pixelation, resulting in a Gaussian blur of the true image rather than a pixelation. I want this because pixelated images are in some sense not invariant to rotations other than 90 degrees.
 4. Again - not robust to rotations. I realize now that the GCE and VCR inputs are slightly rotated, but PIE is not! This makes the checkerboard even worse in that case. 
 
+
+
 # HOW TO USE
 
 So far produces weird results on different sized images, and is only usable for prediction. I will add usable code to train the model later.
@@ -57,6 +59,6 @@ Nonetheless, you can simply clone this repository, install necessary dependencie
 python PredictFromSaved.py
 ```
 
-in your command line.
+in your command line. Or, if you'd prefer, just fire up the jupyter notebook MarshBoundaryDemo.ipynb. 
 
 
