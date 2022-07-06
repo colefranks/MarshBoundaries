@@ -39,13 +39,27 @@ We only did this prediction on GCE and VCR.
 
 <img src="figures/MaxPool87val.png"/>
 
+## Behavior on a new marsh 
+
+Here's the behavior on PIE after being trained only on GCE and VCR: 
+
+
+<img src="figures/WithAugmentation.png"/>
+
+and the true mask:
+
+<img src="new-masks/updated_PIE_mask.jpg"/>
+
+It appears to confuse marsh for upland and upland for water. There's still much room for improvement. Also need to encourage some connectivity in the channels. 
+
 
 ## More ideas 
 
 1. We still get many checkerboard artifacts. I would hope that a more expressive model could eliminate these at the expense of overfitting, but 89 percent is the highest training error so far even with deeper nets. Before regularizing we at least need to overfit!
-2. Augment - again, we first need to overfit. Also, the input image is much lower resolution than the mask. This maybe makes it less surprising that it's hard to overfit, because we are doing a kind of super-resolution at the same time.
-3. Do some interpolation to the input images to get rid of the pixelation, resulting in a Gaussian blur of the true image rather than a pixelation. I want this because pixelated images are in some sense not invariant to rotations other than 90 degrees.
+2. Augment - again, we first need to overfit. Also, the input image is much lower resolution than the mask. This maybe makes it less surprising that it's hard to overfit, because we are doing a kind of super-resolution at the same time. *Done: random rotations,zooms,flips.*
+3. Do some interpolation to the input images to get rid of the pixelation, resulting in a Gaussian blur of the true image rather than a pixelation. I want this because pixelated images are in some sense not invariant to rotations other than 90 degrees.  
 4. Again - not robust to rotations. I realize now that the GCE and VCR inputs are slightly rotated, but PIE is not! This makes the checkerboard even worse in that case. 
+5. Use greyscale input data instead of grey to jpg to grey again. Try augmenting colors.
 
 
 

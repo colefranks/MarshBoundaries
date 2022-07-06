@@ -9,6 +9,10 @@ import matplotlib.pyplot as plt
 XDIM = 2048
 YDIM = 11*XDIM//8
 
+#XDIM = 512
+#YDIM = 11*XDIM//8
+
+
 #for now 
 FOLDER = "train_jpg/GCE"
 
@@ -61,6 +65,9 @@ def pred_from_saved(
     starty = min(XDIM,startx)
     endx = min(XDIM,startx + zoomx)
     endy = min(YDIM,starty + zoomy)
+
+    zoomx = min(XDIM,zoomx)
+    zoomy = min(YDIM,zoomy)
 
     WHICH_IMG = 0
     WHICH_BAND = 4

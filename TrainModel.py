@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 from IPython.display import clear_output
 
 
-
-
 #LOAD IMAGES
 # chose this size so that it approximates images well but is also highly divisible by 2
 
