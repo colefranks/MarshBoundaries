@@ -12,5 +12,6 @@ tmp
 .DS_Store
 *.ipynb_checkpoints*
 old-junk/
+Meeting.md
 literature/
 logs/
