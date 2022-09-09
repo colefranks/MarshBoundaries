@@ -14,7 +14,7 @@ YDIM = 11*XDIM//8
 
 
 #for now 
-FOLDER = "train_jpg/GCE"
+#FOLDER = "train_jpg/VCR"
 
 #assumes the images in the folder look like Band1.jpg, Band2.jpg etc
 def folder_to_array(folder):
@@ -47,17 +47,17 @@ def create_mask_pred(pred_mask):
 
 #load model 
 
-
+CLASS_DICT = {0: 'marsh', 1: 'water', 2: 'upland', 3: 'unlabeled'}
 
 #it is not robust to re-sizing.
 
 def pred_from_saved(
-    model_path = 'saved-models/Depth2Maxpool87val',
-    folder_path = "train_jpg/GCE",
+    model_path = 'saved-models/Depth2RandomFlip89val',
+    folder_path = "train_jpg/PIE",
     startx = 0, 
     starty = 0, 
-    zoomx = 400,
-    zoomy=400,
+    zoomx = 1000,
+    zoomy=1000,
     fig_size=5
     ):
 
@@ -83,13 +83,19 @@ def pred_from_saved(
 
     small_pred = create_mask_pred(small_pred)
 
+    num_class = len(CLASS_DICT)
 
-    plt.figure(figsize=(fig_size, fig_size))
-    plt.subplot(121)
-    plt.imshow(small_image[0,:,:,WHICH_BAND])
-    plt.subplot(122)
-    plt.imshow(small_pred,vmin=0, vmax=3)
-
+    cmap = plt.cm.get_cmap('viridis', num_class)
+    fig = plt.figure(figsize=(fig_size, fig_size))
+    ax1 = fig.add_subplot(121)
+    ax1.imshow(small_image[0,:,:,WHICH_BAND],cmap=cmap)
+    ax2= fig.add_subplot(122)
+    im2 = ax2.imshow(small_pred,vmin=0, vmax=num_class-1,cmap=cmap)
+    cbar = plt.colorbar(
+        im2, 
+        ticks=[3/8 + i*((num_class-1.0)/num_class) for i in range(num_class)],
+        orientation='horizontal',ax=fig.get_axes())
+    cbar.set_ticklabels([CLASS_DICT[i] for i in range(num_class)])
     plt.show()
 
 def main():
