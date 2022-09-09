@@ -85,10 +85,11 @@ def pred_from_saved(
 
     num_class = len(CLASS_DICT)
 
-    cmap = plt.cm.get_cmap('viridis', num_class)
+
     fig = plt.figure(figsize=(fig_size, fig_size))
     ax1 = fig.add_subplot(121)
-    ax1.imshow(small_image[0,:,:,WHICH_BAND],cmap=cmap)
+    ax1.imshow(small_image[0,:,:,WHICH_BAND])
+    cmap = plt.cm.get_cmap('viridis', num_class)
     ax2= fig.add_subplot(122)
     im2 = ax2.imshow(small_pred,vmin=0, vmax=num_class-1,cmap=cmap)
     cbar = plt.colorbar(
