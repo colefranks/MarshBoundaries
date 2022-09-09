@@ -74,5 +74,3 @@ python PredictFromSaved.py
 ```
 
 in your command line. Or, if you'd prefer, just fire up the jupyter notebook MarshBoundaryDemo.ipynb. 
-
-
