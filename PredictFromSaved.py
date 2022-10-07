@@ -79,9 +79,9 @@ def pred_from_saved(
 
     small_image = get_tensor_pred(images[WHICH_IMG,:,startx:endx ,starty:endy].reshape([1,BANDS,zoomx,zoomy]))
 
-    small_pred = model.predict(small_image)
+    small_1hot = model.predict(small_image)
 
-    small_pred = create_mask_pred(small_pred)
+    small_pred = create_mask_pred(small_1hot)
 
     num_class = len(CLASS_DICT)
 
@@ -98,6 +98,7 @@ def pred_from_saved(
         orientation='horizontal',ax=fig.get_axes())
     cbar.set_ticklabels([CLASS_DICT[i] for i in range(num_class)])
     plt.show()
+    return (small_image, small_1hot)
 
 def main():
     pred_from_saved()
