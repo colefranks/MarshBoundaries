@@ -1,6 +1,6 @@
 # MarshBoundaries
 
-Joint project with [Yiyang Xu](https://www.bu.edu/earth/profiles/xu/) to classify marshes into water, marsh and upland. Uses depth 1 convolutional net with kernel size 4, or equivalently classifies each pixel by applying linear regression to the 4x4 neighborhood of the image pixels. We didn't see gains by using deeper u-nets (the classic architecture for image segnemtation). Results:
+Joint project with [Yiyang Xu](https://www.bu.edu/earth/profiles/xu/) to classify marshes into water, marsh and upland. Uses depth 1 convolutional net with kernel size 4, or equivalently classifies each pixel by applying linear regression to the 4x4 neighborhood of the image pixels. We didn't see gains by using deeper u-nets (the classic architecture for image segmentation). Results:
 
 ![site results](./figures/linreg3000allsites.png)
 the figure is self-explanatory other than the dark line across the rightmost images. Above the line is test data (which the algorithm does not get to see during training time) and below it is training data. Note that lots of the pixels are unlabeled, so we obtain predictions for a lot of unlabeled area.
