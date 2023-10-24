@@ -15,8 +15,8 @@ LINE = 3*XDIM//8
 def folder_to_array(folder):
     images = []
     
-    for i in range(1,12):
-        img = cv.imread(os.path.join(folder,"Band%d.jpg" % i))
+    for i in range(1,11):
+        img = cv.imread(os.path.join(folder,"B%d.png" % i))
         #print("Band%d.jpg" % i)
         if img is not None:
             #convert to black and white
@@ -46,7 +46,7 @@ CLASS_DICT = {0: 'marsh', 1: 'water', 2: 'upland', 3: 'unlabeled'}
 #it is not robust to re-sizing.
 
 def pred_from_saved(
-    model_path = 'saved-models/Depth2RandomFlip89val',
+    model_path = 'saved-models/Bmodel-5000',
     folder_path = "train_jpg",
     startx = 0, 
     starty = 0, 
@@ -54,9 +54,9 @@ def pred_from_saved(
     zoomy=1000,
     fig_size=5
     ):
-    pie_path = f'{folder_path}/PIE_scaled'
-    vcr_path = f'{folder_path}/VCR_scaled'
-    gce_path = f'{folder_path}/GCE_scaled'
+    pie_path = f'{folder_path}/PIE'
+    vcr_path = f'{folder_path}/VCR'
+    gce_path = f'{folder_path}/GCE'
     
     startx = min(XDIM,startx)
     starty = min(XDIM,startx)
